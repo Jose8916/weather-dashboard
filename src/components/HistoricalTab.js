@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const HistoricalTab = ({ historical }) => {
     if (!historical || historical.length === 0)
-        return <Typography>No hay datos históricos disponibles.</Typography>;
+        return <Typography>No historical data available</Typography>;
 
     return (
         <motion.div

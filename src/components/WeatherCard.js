@@ -10,7 +10,7 @@ const WeatherCard = ({ data }) => {
             <h3>{date}</h3>
             <img src={iconUrl} alt={data.weather[0].description} />
             <p>Temp: {data.main.temp} °C</p>
-            <p>Humedad: {data.main.humidity} %</p>
+            <p>Humidity: {data.main.humidity} %</p>
         </div>
     );
 };

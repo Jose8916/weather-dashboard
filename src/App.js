@@ -32,8 +32,7 @@ const App = () => {
                     fetchWeatherByCoords(latitude, longitude);
                 },
                 (error) => {
-                    console.error('Error obteniendo la geolocalización:', error);
-                    // Cargar una ciudad por defecto si falla la geolocalización
+                    console.log('Error obteniendo la geolocalización:', error.message);
                     dispatch(fetchWeather('Lima'));
                 }
             );
@@ -48,17 +47,17 @@ const App = () => {
             const API_KEY = 'a1a077a9e6b4ad79fa0470fe7ff2b0dd'; // Asegúrate de que tu API Key sea válida
             const unit = weather.unit;
 
-            // Obtener clima actual
+            // Obtain clima actual
             const currentWeatherResponse = await axios.get(
                 `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${API_KEY}`
             );
 
-            // Obtener pronóstico de 5 días
+            // Obtain pronóstico de 5 días
             const forecastResponse = await axios.get(
                 `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${unit}&appid=${API_KEY}`
             );
 
-            // Intentar obtener datos históricos (últimos 5 días por limitaciones gratuitas)
+            // Intentar Obtain datos históricos (últimos 5 días por limitaciones gratuitas)
             let historical = [];
             try {
                 const historicalDataPromises = [];
@@ -75,8 +74,7 @@ const App = () => {
                 const historicalResponses = await Promise.all(historicalDataPromises);
                 historical = historicalResponses.map((res) => res.data.current);
             } catch (historicalError) {
-                console.error('Error al obtener datos históricos:', historicalError.message);
-                // Opcional: dispatch para manejar el error de históricos si lo deseas
+                console.error('Error al Obtain datos históricos:', historicalError.message);
             }
 
             dispatch({
@@ -124,8 +122,8 @@ const App = () => {
                     </Box>
                     <Box mt={4}>
                         <Tabs value={activeTab} onChange={handleTabChange} centered>
-                            <Tab label="Pronóstico" />
-                            <Tab label="Histórico" />
+                            <Tab label="Forecast" />
+                            <Tab label="Historical" />
                         </Tabs>
                         <Box mt={2}>
                             {activeTab === 0 && <ForecastTab forecast={weather.forecast} />}

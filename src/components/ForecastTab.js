@@ -13,7 +13,7 @@ const ForecastTab = ({ forecast }) => {
         return acc;
     }, {});
 
-    // Obtener promedio diario
+    // Obtain promedio diario
     const forecastData = Object.keys(dailyForecast).map((date) => {
         const temps = dailyForecast[date].map((item) => item.main.temp);
         const weather = dailyForecast[date][0].weather[0];

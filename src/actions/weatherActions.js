@@ -1,7 +1,6 @@
-// src/actions/weatherActions.js
 import axios from 'axios';
 
-const API_KEY = 'a1a077a9e6b4ad79fa0470fe7ff2b0dd'; // Asegúrate de que tu API Key sea válida
+const API_KEY = 'a1a077a9e6b4ad79fa0470fe7ff2b0dd'; // Ensure your API Key is valid
 
 export const fetchWeather = (city) => async (dispatch, getState) => {
     dispatch({ type: 'FETCH_WEATHER_REQUEST' });
@@ -9,28 +8,28 @@ export const fetchWeather = (city) => async (dispatch, getState) => {
     const { unit } = getState().weather;
 
     try {
-        // Obtener coordenadas de la ciudad
+        // Obtain coordinates of the city
         const geoResponse = await axios.get(
             `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`
         );
 
         if (geoResponse.data.length === 0) {
-            throw new Error('Ciudad no encontrada');
+            throw new Error('City not found');
         }
 
         const { lat, lon } = geoResponse.data[0];
 
-        // Obtener clima actual
+        // Obtain current weather
         const currentWeatherResponse = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${API_KEY}`
         );
 
-        // Obtener pronóstico de 5 días
+        // Obtain 5-day forecast
         const forecastResponse = await axios.get(
             `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${unit}&appid=${API_KEY}`
         );
 
-        // Intentar obtener datos históricos (últimos 5 días por limitaciones gratuitas)
+        // Attempt to obtain historical data (last 5 days with Free API limitations)
         let historical = [];
         try {
             const historicalDataPromises = [];
@@ -47,8 +46,22 @@ export const fetchWeather = (city) => async (dispatch, getState) => {
             const historicalResponses = await Promise.all(historicalDataPromises);
             historical = historicalResponses.map((res) => res.data.current);
         } catch (historicalError) {
-            console.error('Error al obtener datos históricos:', historicalError.message);
-            // Opcional: dispatch para manejar el error de históricos si lo deseas
+            // Check if the error is due to unauthorized access (likely because of Free API limitations)
+            if (
+                historicalError.response &&
+                historicalError.response.status === 401
+            ) {
+                console.log(
+                    'You are using Free API. Not able to get historical data.'
+                );
+            } else {
+                console.log(
+                    'Error getting historical data:',
+                    historicalError.message
+                );
+            }
+            // Optionally, you can set historical to null or an empty array
+            historical = [];
         }
 
         dispatch({

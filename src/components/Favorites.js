@@ -32,9 +32,9 @@ const Favorites = () => {
 
     return (
         <Box mt={4}>
-            <Typography variant="h6">Ciudades Favoritas</Typography>
+            <Typography variant="h6">Favourite Cities</Typography>
             {favorites.length === 0 ? (
-                <Typography variant="body2">No tienes ciudades favoritas.</Typography>
+                <Typography variant="body2">No favourites cities.</Typography>
             ) : (
                 <List>
                     {favorites.map((city, index) => (

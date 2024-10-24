@@ -60,28 +60,28 @@ const CurrentWeather = ({ data }) => {
                         <Box ml={2}>
                             <Typography variant="h4">{main.temp} °C</Typography>
                             <Typography variant="subtitle1">{weather[0].description}</Typography>
-                            <Typography variant="body2">Humedad: {main.humidity} %</Typography>
+                            <Typography variant="body2">Humidity: {main.humidity} %</Typography>
                         </Box>
                     </Box>
                     <Grid container spacing={2} mt={2}>
                         <Grid item xs={6} sm={3}>
                             <Typography variant="body2">
-                                <strong>Sensación Térmica:</strong> {main.feels_like} °C
+                                <strong>Temperature:</strong> {main.feels_like} °C
                             </Typography>
                         </Grid>
                         <Grid item xs={6} sm={3}>
                             <Typography variant="body2">
-                                <strong>Presión:</strong> {main.pressure} hPa
+                                <strong>Pressure:</strong> {main.pressure} hPa
                             </Typography>
                         </Grid>
                         <Grid item xs={6} sm={3}>
                             <Typography variant="body2">
-                                <strong>Viento:</strong> {wind.speed} m/s
+                                <strong>Wind:</strong> {wind.speed} m/s
                             </Typography>
                         </Grid>
                         <Grid item xs={6} sm={3}>
                             <Typography variant="body2">
-                                <strong>Dirección Viento:</strong> {wind.deg}°
+                                <strong>Direction Wind:</strong> {wind.deg}°
                             </Typography>
                         </Grid>
                     </Grid>

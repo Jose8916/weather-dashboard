@@ -32,7 +32,8 @@ const ForecastChart = ({ forecast }) => {
     return (
         <Box width="100%" height={300}>
             <Typography variant="h6" gutterBottom>
-                Pronóstico de Temperatura
+            Temperature Forecast
+
             </Typography>
             <ResponsiveContainer>
                 <LineChart data={chartData}>

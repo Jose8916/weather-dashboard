@@ -38,13 +38,13 @@ const SearchBar = () => {
         >
             <TextField
                 variant="outlined"
-                label="Buscar ciudad"
+                label="Search City"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 sx={{ width: '300px' }}
             />
             <Button variant="contained" type="submit">
-                Buscar
+                Search
             </Button>
             <Tooltip title="Agregar a favoritos">
                 <IconButton color="secondary" onClick={handleAddFavorite}>
