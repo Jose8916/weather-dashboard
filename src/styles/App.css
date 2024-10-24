@@ -1,0 +1,117 @@
+/* src/styles/App.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f7;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 10px;
+  width: 60%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin: 10px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  max-width: 400px;
+}
+
+.forecast-tab, .historical-tab {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.weather-card, .historical-card {
+  background-color: white;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 150px;
+}
+
+.tabs {
+  margin-top: 20px;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: none;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  background-color: #007BFF;
+  color: white;
+}
+
+.error {
+  color: red;
+}
+
+@media (max-width: 600px) {
+  .search-bar input {
+      width: 80%;
+  }
+
+  .weather-card, .historical-card {
+      width: 100%;
+  }
+}
+
+.current-weather.clear {
+  background-color: #a8dadc; /* Azul claro */
+}
+
+.current-weather.cloudy {
+  background-color: #d3d3d3; /* Gris */
+}
+
+.current-weather.rainy {
+  background-color: #a9a9a9; /* Gris oscuro */
+}
+
+.current-weather.snowy {
+  background-color: #f0f8ff; /* Azul muy claro */
+}
